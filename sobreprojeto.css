@@ -23,11 +23,10 @@ body {
 header {
     width: 100%;
     height: 70px;
-    background-color: #000;
+    background-color: #000000;
+    margin-bottom: 100px;
     display: flex;
     justify-content: space-between;
-    position: sticky;
-    margin-bottom: 100px;
 }
 
 .titulo {
@@ -47,7 +46,8 @@ header {
     align-items: center;
 }
 
-.item, .item1 {
+.item,
+.item1 {
     min-width: 150px;
     color: #fff;
     background-color: none;
@@ -57,15 +57,26 @@ header {
     margin: 0;
     text-decoration: none;
     transition: 0.5s ease;
+    text-wrap: nowrap;
 }
 
-.item:hover, .item1:hover {
+.item:hover,
+.item1:hover {
     background-color: #1f5afc;
 }
 
 .item1 {
     background-color: #2b99ff;
     font-weight: bold;
+}
+
+.icon {
+    display: none;
+    font-size: 30px;
+}
+
+input[type="checkbox"] {
+    display: none;
 }
 
 .logo {
@@ -86,25 +97,29 @@ header {
     translate: 112px 70px;
 }
 
-section {
+.linha {
+    border: 2px solid #000;
+    width: auto;
+    display: flex;
+    margin: 50px 0px;
+}
+
+.sobre-section {
     padding: 50px 400px;
     background-color: #e7e7e7;
     padding-bottom: 80px;
-}
-
-.linha {
-    border: 2px solid #000;
-    margin: 40px 0;
-    width: 1100px;
-    justify-self: center;
-}
-
-.sobre-content {
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
     align-items: center;
     color: #3d3d3d;
+}
+
+.sobresla2 {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    width: fit-content;
 }
 
 .sobre-texto {
@@ -117,9 +132,10 @@ section {
     color: #000000;
     font-size: 70px;
     margin-bottom: 20px;
+    text-wrap: nowrap;
 }
 
-.sobreimagem {
+.sobre-imagem {
     flex: 1;
     height: 340px;
     display: flex;
@@ -134,6 +150,7 @@ section {
     margin-top: 80px;
     display: flex;
     flex-direction: column;
+    
 }
 
 .equipe h2 {
@@ -167,6 +184,7 @@ section {
 .membro {
     width: 250px;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .foto-membro {
@@ -179,7 +197,7 @@ section {
     align-items: center;
     justify-content: center;
     color: white;
-    object-fit:contain;
+    object-fit: contain;
 }
 
 .membro h3 {
@@ -232,4 +250,76 @@ footer p {
 .redesfooter a:hover {
     color: #2b99ff;
     transform: scale(1.25);
+}
+
+@media (max-width: 1750px) {
+    .logo {
+        margin-top: -298px;
+        background-image: url('images/logolgl5.png');
+        background-size: contain;
+    }
+
+    .quadrado {
+        margin-top: -382px;
+        position: absolute;
+    }
+
+    header {
+        margin-bottom: 350px;
+    }
+}
+
+@media (max-width: 1160px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        /* necessário para posicionar o menu internamente */
+        z-index: 10;
+    }
+
+    .items {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column-reverse;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+        background: #000000;
+        z-index: 20;
+        /* garante que fique acima da imagem */
+    }
+
+    #menu:checked~.items {
+        max-height: 500px;
+    }
+
+    .item,
+    .item1 {
+        width: 100%;
+        padding: 23px;
+        margin: 0;
+        border-top: 1px solid #fff;
+        text-align: center;
+    }
+
+    .icon {
+        display: block;
+        position: absolute;
+        top: 5px;
+        right: 20px;
+        font-size: 40px;
+        color: #fff;
+        cursor: pointer;
+        z-index: 30;
+        font-weight: bold;
+    }
+
+    .titulo {
+        padding: 8px;
+        display: flex;
+        font-size: 35px;
+    }
 }
