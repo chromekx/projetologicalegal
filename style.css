@@ -172,6 +172,7 @@ span.carousel-control-next-icon {
     font-family: 'Bungee';
     color: #000;
     text-wrap: wrap;
+    overflow: visible;
 }
 
 .textbox p {
@@ -223,7 +224,6 @@ span.carousel-control-next-icon {
     height: 450px;
     background-color: #ffffff;
     display: flex;
-    position: relative;
     margin-top: 30px;
     z-index: 2;
 }
@@ -599,7 +599,7 @@ footer p {
     }
 
     .foto3 {
-        background-image: url(images/domino.png);
+        background-image: url(images/objetivos.jpg);
         background-size: contain;
         background-repeat: no-repeat;
     }
@@ -659,7 +659,8 @@ footer p {
         margin: 20px;
     }
 
-    .carousel-control-prev, .carousel-control-next {
+    .carousel-control-prev,
+    .carousel-control-next {
         top: -600px;
     }
 
@@ -667,7 +668,7 @@ footer p {
 
 @media (max-width: 650px) {
     .linhajogo {
-        margin-top: 0px;
+        margin-top: -50px;
         margin-bottom: -50px;
     }
 
@@ -699,6 +700,49 @@ footer p {
     .foto3 {
         margin-top: -25px;
     }
+
+    .carousel-inner {
+        transform: scale(75%);
+        top: -280px;
+    }
+
+    .inner {
+        transform: scale(90%);
+    }
+
+    .container1 span.carousel-control-prev-icon,
+    span.carousel-control-next-icon {
+        transform: scale(60%);
+        width: 50px;
+        height: 50px;
+    }
+
+    button.carousel-control-next,
+    button.carousel-control-prev {
+        height: 64px;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        top: 600px;
+        justify-self: center;
+    }
+}
+
+@media (max-width: 515px) {
+    .linhajogo {
+        margin-top: -110px;
+        margin-bottom: -100px;
+    }
+
+    .jogoclassico,
+    .jogoserio {
+        transform: scale(55%);
+    }
+
+    .foto2 {
+        margin-top: -50px;
+    }
 }
 
 @media (max-width: 425px) {
@@ -711,7 +755,7 @@ footer p {
     header {
         margin-bottom: 200px;
     }
-    
+
     .linhajogo {
         margin-top: -110px;
         margin-bottom: -140px;
@@ -722,16 +766,8 @@ footer p {
         transform: scale(40%);
     }
 
-    .jogocontent {
-        background-repeat: no-repeat;
-        background-size: cover;
-        display: flex;
-        width: 1050px;
-        height: 500px;
-    }
-
     .jogoserio {
-        margin-top: -400px;
+        margin-top: -380px;
     }
 
     .containerfooter {
@@ -745,18 +781,24 @@ footer p {
         height: 50px;
     }
 
-    button.carousel-control-next, button.carousel-control-prev {
+    button.carousel-control-next,
+    button.carousel-control-prev {
         height: 64px;
     }
 
-    .carousel-control-prev, .carousel-control-next {
+    .carousel-control-prev,
+    .carousel-control-next {
         top: 600px;
         justify-self: center;
     }
 
     .carousel-inner {
         transform: scale(65%);
-        top: -290px;
+        top: -330px;
+    }
+
+    .inner {
+        transform: scale(90%);
     }
 
     .container2 {
@@ -772,22 +814,57 @@ footer p {
     }
 
     .foto3 {
-        margin-top: -0px;
+        margin-top: 0px;
     }
 
     .textbox {
         padding: 100px 10px;
-    }   
-
-    .quadradojogo {
-        display: none;
     }
 
     footer {
-        transform: 200px;
+        translate: 0px -80px;
     }
 
-    .textbox {
-        width: fit-content;
+}
+
+@media (max-width: 375px) {
+    .logolegal {
+        transform: scale(45%);
+        translate: -110px -8px;
+        margin: 20px;
+    }
+
+    header {
+        margin-bottom: 180px;
+    }
+
+    .textbox h1 {
+        transform: scale(85%);
+        transform-origin: left;
+    }
+}
+
+@media (max-width: 320px) {
+    .textbox h1 {
+        transform: scale(75%);
+        transform-origin: left;
+    }
+
+    .linhajogo {
+        margin-top: -110px;
+        margin-bottom: -170px;
+    }
+
+    .jogoclassico,
+    .jogoserio {
+        transform: scale(30%);
+    }
+
+    .jogoserio {
+        margin-top: -430px;
+    }
+
+    .containerfooter {
+        transform: scale(60%);
     }
 }
