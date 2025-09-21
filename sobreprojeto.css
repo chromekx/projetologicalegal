@@ -80,11 +80,13 @@ input[type="checkbox"] {
 }
 
 .logo {
-    width: 200px;
+    width: 190px;
+    height: 246px;
     z-index: 3;
     position: absolute;
-    margin-left: 55px;
-    margin-top: 85px;
+    background-image: url(images/logolgl3.png);
+    background-size: contain;
+    translate: 60px 88px;
 }
 
 .quadrado {
@@ -105,6 +107,7 @@ input[type="checkbox"] {
 }
 
 .sobre-section {
+    justify-content: center;
     padding: 50px 400px;
     background-color: #e7e7e7;
     padding-bottom: 80px;
@@ -113,6 +116,7 @@ input[type="checkbox"] {
     gap: 40px;
     align-items: center;
     color: #3d3d3d;
+    height: fit-content;
 }
 
 .sobresla2 {
@@ -132,7 +136,6 @@ input[type="checkbox"] {
     color: #000000;
     font-size: 70px;
     margin-bottom: 20px;
-    text-wrap: nowrap;
 }
 
 .sobre-imagem {
@@ -150,23 +153,21 @@ input[type="checkbox"] {
     margin-top: 80px;
     display: flex;
     flex-direction: column;
-    
 }
 
 .equipe h2 {
     font-family: 'Bungee';
     color: #000;
     font-size: 70px;
-    margin-left: 80px;
-    margin-bottom: 60px;
+    margin: 0px 80px 60px 80px;
+    width: fit-content;
 }
 
 .equipe p {
     font-family: 'Asimovian';
     font-weight: bold;
     font-size: 40px;
-    margin-bottom: 70px;
-    margin-left: 80px;
+    margin: 0px 80px 60px 80px;
     color: #000;
 }
 
@@ -174,8 +175,7 @@ input[type="checkbox"] {
     display: flex;
     gap: 20px;
     flex-direction: row;
-    width: 1200px;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin: auto;
     margin-bottom: 20px;
     flex-wrap: wrap;
@@ -183,6 +183,7 @@ input[type="checkbox"] {
 
 .membro {
     width: 250px;
+    margin: 20px;
     text-align: center;
     box-sizing: border-box;
 }
@@ -254,7 +255,7 @@ footer p {
 
 @media (max-width: 1750px) {
     .logo {
-        margin-top: -298px;
+        translate: 60px -294px;
         background-image: url('images/logolgl5.png');
         background-size: contain;
     }
@@ -266,6 +267,16 @@ footer p {
 
     header {
         margin-bottom: 350px;
+    }
+}
+
+@media (max-width: 1230px) {
+    .sobresla2 {
+        flex-direction: column;
+    }
+
+    .sobre-section {
+        padding: 50px 200px;
     }
 }
 
@@ -321,5 +332,119 @@ footer p {
         padding: 8px;
         display: flex;
         font-size: 35px;
+    }
+}
+
+@media (max-width: 660px) {
+    header {
+        margin-bottom: 300px;
+    }
+
+    .logolegal {
+        scale: 80%;
+        translate: -80px -0px;
+    }
+
+    .sobre-content {
+        scale: 80%;
+    }
+
+    .equipe h2 {
+        font-size: 50px;
+    }
+
+    .containerfooter {
+        scale: 80%;
+    }
+}
+
+@media (max-width: 550px) {
+    .sobre-content {
+        scale: 70%;
+        top: -200px;
+    }
+
+    .equipe {
+        top: 200px;
+        scale: 90%;
+    }
+}
+
+@media (max-width: 425px) {
+    header {
+        margin-bottom: 250px;
+    }
+
+    .logolegal {
+        scale: 65%;
+        translate: -80px -0px;
+    }
+
+    .sobre-section {
+        padding: 50px;
+        height: 600px;
+    }
+
+    .sobre-content {
+        scale: 60%;
+        translate: 0px -150px;
+    }
+
+    .equipe {
+        top: 200px;
+        scale: 90%;
+    }
+}
+
+@media (max-width: 375px) {
+    .sobre-section {
+        padding: 50px;
+        height: 600px;
+        margin-bottom: -100px;
+    }
+
+    .sobre-content {
+        scale: 50%;
+        translate: 0px -150px;
+    }
+
+    .equipe p {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 320px) {
+    .sobre-section {
+        padding: 50px;
+        height: 400px;
+        margin-bottom: -100px;
+    }
+
+    .sobre-content {
+        scale: 40%;
+        translate: 0px -250px;
+    }
+
+    header {
+        margin-bottom: 200px;
+    }
+
+    .logolegal {
+        scale: 50%;
+        translate: -80px -10px;
+    }
+
+    .equipe h2 {
+        font-size: 40px;
+        margin: 70px;
+    }
+
+    .equipetexto p {
+        font-size: 25px;
+        margin: 60px;
+    }
+
+    .containerfooter {
+        scale: 70%;
     }
 }
