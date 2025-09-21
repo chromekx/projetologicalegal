@@ -725,12 +725,13 @@ footer p {
     .jogocontent {
         background-repeat: no-repeat;
         background-size: cover;
+        display: flex;
         width: 1050px;
         height: 500px;
     }
 
     .jogoserio {
-        margin-top: -370px;
+        margin-top: -400px;
     }
 
     .containerfooter {
@@ -750,14 +751,7 @@ footer p {
 
     .carousel-control-prev, .carousel-control-next {
         top: 600px;
-    }
-
-    .carousel-control-next {
-        left: 205px;
-    }
-
-    .carousel-control-prev {
-        left: 150px !important;
+        justify-self: center;
     }
 
     .carousel-inner {
@@ -787,5 +781,13 @@ footer p {
 
     .quadradojogo {
         display: none;
+    }
+
+    footer {
+        transform: 200px;
+    }
+
+    .textbox {
+        width: fit-content;
     }
 }
