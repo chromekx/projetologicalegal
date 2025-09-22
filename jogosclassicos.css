@@ -142,6 +142,7 @@ input[type="checkbox"] {
   border-radius: 0px 0px 6px 6px;
   /* garante que fique só no card */
   box-sizing: border-box;
+  width: auto;
 }
 
 .game:hover .info {
