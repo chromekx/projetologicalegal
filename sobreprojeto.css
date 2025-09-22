@@ -348,6 +348,11 @@ footer p {
 
     .sobre-content {
         scale: 80%;
+        translate: 0px -80px;
+    }
+
+    .sobre-section {
+        height: calc(100% - 500px)
     }
 
     .equipe h2 {
@@ -362,12 +367,20 @@ footer p {
 @media (max-width: 550px) {
     .sobre-content {
         scale: 70%;
-        top: -200px;
+        translate: 0px -120px;
+    }
+
+    .sobre-section {
+        height: calc(100% - 580px)
     }
 
     .equipe {
-        top: 200px;
+        translate: 0px -80px;
         scale: 90%;
+    }
+
+    footer {
+        translate: 0px -150px;
     }
 }
 
@@ -383,35 +396,35 @@ footer p {
 
     .sobre-section {
         padding: 50px;
-        height: 600px;
+        height: 570px;
     }
 
     .sobre-content {
         scale: 60%;
-        translate: 0px -150px;
+        translate: 0px -180px;
     }
 
     .equipe {
         top: 200px;
         scale: 90%;
     }
+
+    .equipe p {
+        font-size: 30px;
+    }
 }
 
 @media (max-width: 375px) {
     .sobre-section {
         padding: 50px;
-        height: 600px;
-        margin-bottom: -100px;
+        height: 510px;
     }
 
     .sobre-content {
         scale: 50%;
-        translate: 0px -150px;
+        translate: 0px -200px;
     }
 
-    .equipe p {
-        font-size: 30px;
-    }
 }
 
 @media (max-width: 320px) {
