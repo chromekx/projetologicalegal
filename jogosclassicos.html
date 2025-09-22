@@ -14,19 +14,26 @@
 
 <body>
   <header>
+    <label for="menu" class="icon">&#9776;</label>
+    <input type="checkbox" id="menu">
+
     <p class="titulo">LGL</p>
     <div class="items">
       <a href="https://portal.sc.senac.br/" class="item1">Senac</a>
       <a href="suporte.html" class="item">Suporte</a>
       <a href="sobreprojeto.html" class="item">Sobre o Projeto</a>
-      <a href="index.html#categorias" class="item">Categorias</a>
+      <a href="#categorias" class="item">Categorias</a>
       <a href="index.html" class="item">Home</a>
     </div>
   </header>
 
   <section class="container1">
-    <div class="linhajogo"></div>
-    <h1 class="titulojogo">Jogos Clássicos</h1>
+    <div class="hero">
+      <div class="titulojogo">
+        <div class="linha"></div>
+        <h1>Jogos Clássicos</h1>
+      </div>
+    </div>
   </section>
 
   <div class="carousel-container">
@@ -68,64 +75,93 @@
     </div>
   </footer>
 
-  <script>
-    const track = document.getElementById("track");
-    const prev = document.getElementById("prev");
-    const next = document.getElementById("next");
-    const games = document.querySelectorAll(".game");
+  <!-- Script removido para evitar redeclaração de variáveis duplicadas -->
 
-    let index = 0;
+  <script>
+    const container = document.querySelector('.carousel-container');
+    const track = document.getElementById('track');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const games = Array.from(document.querySelectorAll('.game'));
+
+    let position = 0; // deslocamento em px
+
+    function getGap() {
+      const style = window.getComputedStyle(track);
+      return parseFloat(style.gap) || 0;
+    }
 
     function getCardWidth() {
-      return games[0].getBoundingClientRect().width + 20; // largura + gap do CSS
+      if (!games.length) return 0;
+      return games[0].getBoundingClientRect().width + getGap();
+    }
+
+    function getMaxScroll() {
+      return track.scrollWidth - container.clientWidth;
+    }
+
+    function updateControls(position, maxScroll) {
+      if (position <= 0) {
+        // início → só a seta da direita
+        prev.style.display = "none";
+        next.style.display = "block";
+        document.querySelector('.controls').style.justifyContent = "flex-end";
+      } else if (position >= maxScroll - 2) {
+        // fim → só a seta da esquerda
+        prev.style.display = "block";
+        next.style.display = "none";
+        document.querySelector('.controls').style.justifyContent = "flex-start";
+      } else {
+        // meio → as duas setas
+        prev.style.display = "block";
+        next.style.display = "block";
+        document.querySelector('.controls').style.justifyContent = "space-between";
+      }
+    }
+
+    function moveCarousel(step) {
+      const cardWidth = getCardWidth();
+      if (!cardWidth) return;
+      position += step * cardWidth;
+      const maxScroll = getMaxScroll();
+
+      if (position < 0) position = 0;
+      if (position > maxScroll) position = maxScroll;
+
+      track.style.transform = `translateX(-${position}px)`;
+
+      updateControls(position, maxScroll);
     }
 
     function updateCarousel() {
-      track.style.transform = `translateX(-${index * getCardWidth()}px)`;
+      const maxScroll = getMaxScroll();
+      if (position > maxScroll) position = maxScroll;
+      track.style.transform = `translateX(-${position}px)`;
+
+      updateControls(position, maxScroll);
     }
 
-    next.addEventListener("click", () => {
-      if (index < games.length - 4) { // 4 cards visíveis
-        index++;
-        updateCarousel();
-      }
+    prev.addEventListener('click', () => moveCarousel(-1));
+    next.addEventListener('click', () => moveCarousel(1));
+
+    window.addEventListener('resize', () => {
+      requestAnimationFrame(updateCarousel);
     });
 
-    prev.addEventListener("click", () => {
-      if (index > 0) {
-        index--;
-        updateCarousel();
-      }
-    });
-
-    window.addEventListener("resize", () => {
+    window.addEventListener('load', () => {
       updateCarousel();
+      setTimeout(updateCarousel, 150);
     });
 
-    document.querySelector('#cubo').onclick = function () {
-      window.location.href = 'cubo.html';
-    };
-
-    document.querySelector('#damas').onclick = function () {
-      window.location.href = 'damas.html';
-    };
-
-    document.querySelector('#velha').onclick = function () {
-      window.location.href = 'jogodavelha.html';
-    };
-
-    document.querySelector('#forca').onclick = function () {
-      window.location.href = 'forca.html';
-    };
-
-    document.querySelector('#tetris').onclick = function () {
-      window.location.href = 'tetris.html';
-    };
-
-    document.querySelector('#xadrez').onclick = function () {
-      window.location.href = 'xadrez.html';
-    };
+    // redirecionamentos
+    document.querySelector('#cubo').onclick = () => window.location.href = 'cubo.html';
+    document.querySelector('#damas').onclick = () => window.location.href = 'damas.html';
+    document.querySelector('#velha').onclick = () => window.location.href = 'jogodavelha.html';
+    document.querySelector('#forca').onclick = () => window.location.href = 'forca.html';
+    document.querySelector('#tetris').onclick = () => window.location.href = 'tetris.html';
+    document.querySelector('#xadrez').onclick = () => window.location.href = 'xadrez.html';
   </script>
+
 </body>
 
 </html>

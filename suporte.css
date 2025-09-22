@@ -221,7 +221,7 @@ section {
     display: flex;
     top: 80px;
     margin: 30px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .faq-section {
@@ -477,10 +477,6 @@ footer p {
 
     .hero h1 {
         font-size: 3rem;
-    }
-
-    .items {
-        gap: 15px;
     }
 }
 
