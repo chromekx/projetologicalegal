@@ -136,6 +136,7 @@ input[type="checkbox"] {
     color: #000000;
     font-size: 70px;
     margin-bottom: 20px;
+    text-wrap: nowrap;
 }
 
 .sobre-imagem {
