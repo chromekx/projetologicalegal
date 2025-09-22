@@ -764,11 +764,11 @@ footer p {
 
     .jogoclassico,
     .jogoserio {
-        transform: scale(40%);
+        transform: scale(45%);
     }
 
     .jogoserio {
-        margin-top: -380px;
+        margin-top: -340px;
     }
 
     .containerfooter {
@@ -794,8 +794,8 @@ footer p {
     }
 
     .carousel-inner {
-        transform: scale(65%);
-        top: -330px;
+        transform: scale(70%);
+        top: -300px;
     }
 
     .inner {
@@ -825,7 +825,6 @@ footer p {
     footer {
         translate: 0px -80px;
     }
-
 }
 
 @media (max-width: 375px) {
@@ -843,12 +842,21 @@ footer p {
         transform: scale(85%);
         transform-origin: left;
     }
+
+    .jogoclassico,
+    .jogoserio {
+        transform: scale(40%);
+    }
 }
 
 @media (max-width: 320px) {
     .textbox h1 {
         transform: scale(75%);
         transform-origin: left;
+    }
+
+    .carousel-inner {
+        top: -310px;
     }
 
     .linhajogo {
@@ -858,14 +866,18 @@ footer p {
 
     .jogoclassico,
     .jogoserio {
-        transform: scale(30%);
+        transform: scale(35%);
     }
 
     .jogoserio {
-        margin-top: -430px;
+        margin-top: -400px;
     }
 
     .containerfooter {
         transform: scale(60%);
+    }
+
+    footer {
+        translate: 0px -100px;
     }
 }
