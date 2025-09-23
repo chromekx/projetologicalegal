@@ -371,6 +371,10 @@ footer p {
     .linhajogo {
         margin-bottom: 45px;
     }
+
+    .jogoserio {
+        translate: 0px 50px;
+    }
 }
 
 @media (max-width: 1440px) {
@@ -691,15 +695,15 @@ footer p {
     }
 
     .foto1 {
-        margin-top: -50px;
+        margin-top: -80px;
     }
 
     .foto2 {
-        margin-top: 35px;
+        margin-top: 5px;
     }
 
     .foto3 {
-        margin-top: -25px;
+        margin-top: -55px;
     }
 
     .carousel-inner {
@@ -746,7 +750,7 @@ footer p {
     }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 450px) {
     .logolegal {
         transform: scale(50%);
         translate: -120px -10px;
@@ -764,7 +768,7 @@ footer p {
 
     .jogoclassico,
     .jogoserio {
-        transform: scale(45%);
+        transform: scale(40%);
     }
 
     .jogoserio {
@@ -798,6 +802,10 @@ footer p {
         top: -300px;
     }
 
+    .textbox h1 {
+        font-size: 60px;
+    }
+
     .inner {
         transform: scale(90%);
     }
@@ -829,8 +837,8 @@ footer p {
 
 @media (max-width: 375px) {
     .logolegal {
-        transform: scale(45%);
-        translate: -110px -8px;
+        transform: scale(40%);
+        translate: -110px -13px;
         margin: 20px;
     }
 
@@ -879,5 +887,11 @@ footer p {
 
     footer {
         translate: 0px -100px;
+    }
+
+    .foto1,
+    .foto2,
+    .foto3 {
+        translate: 0px -50px;
     }
 }
