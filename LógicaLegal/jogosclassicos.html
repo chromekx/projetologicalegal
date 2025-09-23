@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogos Clássicos - LGL</title>
+  <link rel="stylesheet" href="jogosclassicos.css">
+  <link rel="icon" type="image/x-icon" href="images/logolgl2.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&family=Asimovian&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <p class="titulo">LGL</p>
+    <div class="items">
+      <a href="https://portal.sc.senac.br/" class="item1">Senac</a>
+      <a href="suporte.html" class="item">Suporte</a>
+      <a href="sobreprojeto.html" class="item">Sobre o Projeto</a>
+      <a href="index.html#categorias" class="item">Categorias</a>
+      <a href="index.html" class="item">Home</a>
+    </div>
+  </header>
+
+  <section class="container1">
+    <div class="linhajogo"></div>
+    <h1 class="titulojogo">Jogos Clássicos</h1>
+  </section>
+
+  <div class="carousel-container">
+    <div class="carousel-track" id="track">
+      <div class="game" id="cubo"><img src="Pesquisas/classicos/cubo/capa.jpg" alt="Jogo 1">
+        <div class="info">Cubo Mágico</div>
+      </div>
+      <div class="game" id="damas"><img src="Pesquisas/classicos/damas/capa.jpg" alt="Jogo 2">
+        <div class="info">Damas</div>
+      </div>
+      <div class="game" id="velha"><img src="Pesquisas/classicos/velha/capa.webp" alt="Jogo 5">
+        <div class="info">Jogo da Velha</div>
+      </div>
+      <div class="game" id="forca"><img src="Pesquisas/classicos/forca/capa.jpg" alt="Jogo 3">
+        <div class="info">Jogo da Forca</div>
+      </div>
+      <div class="game" id="tetris"><img src="Pesquisas/classicos/tetris/capa.jpg" alt="Jogo 4">
+        <div class="info">Tetris</div>
+      </div>
+      <div class="game" id="xadrez"><img src="Pesquisas/classicos/xadrez/capa.jpg" alt="Jogo 6">
+        <div class="info">Xadrez</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="arrow left" id="prev" style="font-size: 25px;"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="arrow right" id="next" style="font-size: 25px;"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="containerfooter">
+      <p><span>&copy;</span> 2025 Projeto Lógica Legal. Todos os direitos reservados.</p>
+      <div class="redesfooter">
+        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://wa.me/" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const track = document.getElementById("track");
+    const prev = document.getElementById("prev");
+    const next = document.getElementById("next");
+    const games = document.querySelectorAll(".game");
+
+    let index = 0;
+
+    function getCardWidth() {
+      return games[0].getBoundingClientRect().width + 20; // largura + gap do CSS
+    }
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${index * getCardWidth()}px)`;
+    }
+
+    next.addEventListener("click", () => {
+      if (index < games.length - 4) { // 4 cards visíveis
+        index++;
+        updateCarousel();
+      }
+    });
+
+    prev.addEventListener("click", () => {
+      if (index > 0) {
+        index--;
+        updateCarousel();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      updateCarousel();
+    });
+
+    document.querySelector('#cubo').onclick = function () {
+      window.location.href = 'cubo.html';
+    };
+
+    document.querySelector('#damas').onclick = function () {
+      window.location.href = 'damas.html';
+    };
+
+    document.querySelector('#velha').onclick = function () {
+      window.location.href = 'jogodavelha.html';
+    };
+
+    document.querySelector('#forca').onclick = function () {
+      window.location.href = 'forca.html';
+    };
+
+    document.querySelector('#tetris').onclick = function () {
+      window.location.href = 'tetris.html';
+    };
+
+    document.querySelector('#xadrez').onclick = function () {
+      window.location.href = 'xadrez.html';
+    };
+  </script>
+</body>
+
+</html>

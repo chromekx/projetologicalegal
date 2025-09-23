@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cubo Mágico - LGL</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="images/logolgl2.png">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Asimovian&family=Bebas+Neue&family=Bungee&family=
+        Changa+One:ital@0;1&family=Gravitas+One&family=Lexend:wght@100..900&family=Outfit:wght@100..900&
+        family=Pixelify+Sans:wght@400..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="cubo.css">
+</head>
+
+<body>
+    <header>
+        <p class="titulo">LGL</p>
+        <div class="items">
+            <a href="https://portal.sc.senac.br/" class="item1">Senac</a>
+            <a href="suporte.html" class="item">Suporte</a>
+            <a href="sobreprojeto.html" class="item">Sobre o Projeto</a>
+            <a href="index.html#categorias" class="item">Categorias</a>
+            <a href="index.html" class="item">Home</a>
+        </div>
+    </header>
+
+    <!--
+    <img src="images/" alt="Logo" class="logo">
+    <div class="quadrado"></div>-->
+
+    <h2 class="titulojogo">Jogos Clássicos</h2>
+
+    <div class="container1" style="background-image: url(images/fundolglvazio1.png);">
+        <div class="slider">
+            <div class="principal">
+                <video src="Pesquisas/classicos/cubo/video.mkv" controls alt="Imagem principal" class="active">
+            </div>
+
+            <div class="miniaturas">
+                <img src="Pesquisas/classicos/cubo/fotovideo.jpg" alt="Foto 1" class="active">
+                <img src="Pesquisas/classicos/cubo/foto1.png" alt="Foto 2">
+                <img src="Pesquisas/classicos/cubo/foto2.png" alt="Foto 3">
+                <img src="Pesquisas/classicos/cubo/foto3.png" alt="Foto 4">
+                <img src="Pesquisas/classicos/cubo/foto4.png" alt="Foto 5">
+            </div>
+        </div>
+
+        <div class="infojogo">
+            <div class="linha"></div>
+            <h2>Cubo Mágico</h2>
+            <p>O Cubo Mágico (3x3) é um quebra-cabeça tridimensional que desafia percepção espacial,
+                memória de movimentos e lógica de sequência. Embaralhe as faces e reverta-as à posição
+                original combinando cores em cada face — ótimo para desenvolver raciocínio espacial e
+                pensamento algorítmico.
+            </p>
+            <a href="https://www.blog.oncube.com.br/cubo-magico-3d/" class="saibamais" target="_blank">Saiba Mais</a>
+        </div>
+    </div>
+
+    <section class="container2">
+
+        <div class="texto">
+            <h1>Sobre o Jogo</h1>
+            <div class="linha2"></div>
+
+            <div class="info2">
+                <h2>Objetivo & Regras básicas</h2>
+                <ul>
+                    <li>Objetivo: restaurar o cubo para que cada uma das seis faces tenha cor uniforme.</li>
+                    <li>Regras: só são permitidas rotações das camadas; não é permitido desmontar ou trocar peças.</li>
+                </ul>
+            </div>
+
+            <div class="info2">
+                <h2>Regras</h2>
+                <ul>
+                    <li>Os jogadores alternam turnos; normalmente X começa.</li>
+                    <li>Cada turno marca-se uma casa vazia; três em linha vence.</li>
+                    <li>Se todas as casas forem preenchidas sem vencedor, é empate.</li>
+                </ul>
+            </div>
+
+            <div class="info2">
+                <h2>Métodos de Resolução</h2>
+                <ul>
+                    <li>Beginners Method — fácil de aprender, ideal para iniciantes.</li>
+                    <li>CFOP (Fridrich) — usado por speedcubers: Cross, F2L, OLL, PLL.</li>
+                    <li>Outros métodos: Roux, ZZ — diferentes abordagens para eficiência de movimentos.</li>
+                </ul>
+            </div>
+            <div class="info2" style="margin-bottom: 20px">
+                <h2>Dicas & Treinamento</h2>
+                <ul>
+                    <li>Pratique reconhecimento de padrões para executar algoritmos sem pensar demais.</li>
+                    <li>Comece com o método iniciante e depois aprenda OLL/PLL para melhorar tempo.</li>
+                    <li>Use lubrificação e ajuste da tensão do cubo para rotações mais rápidas e suaves.</li>
+                </ul>
+            </div>
+    </section>
+
+    <footer>
+        <div class="containerfooter">
+            <p><span>&copy;</span> 2025 Projeto Lógica Legal. Todos os direitos reservados.</p>
+            <div class="redesfooter">
+                <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook"></i></a>
+                <a href="https://wa.me/" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const principal = document.querySelector(".principal");
+        const miniaturas = document.querySelectorAll(".miniaturas img");
+
+        // Salva o vídeo original para poder reexibir depois
+        const videoHTML = `<video src="Pesquisas/classicos/cubo/video.mkv" controls></video>`;
+
+        miniaturas.forEach((miniatura, index) => {
+            miniatura.addEventListener("click", () => {
+                miniaturas.forEach(m => m.classList.remove("active"));
+                miniatura.classList.add("active");
+
+                // Primeira miniatura mostra o vídeo, outras mostram imagens
+                if (index === 0) {
+                    principal.innerHTML = videoHTML;
+                } else {
+                    principal.innerHTML = `<img src="${miniatura.src}" alt="imagem">`;
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

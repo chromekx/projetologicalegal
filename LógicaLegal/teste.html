@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Carrossel de Jogos</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #111;
+            color: white;
+        }
+
+        .carousel-container {
+            width: 80%;
+            max-width: 1000px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .game {
+            min-width: 20%;
+            /* 5 cards por vez = 100/5 */
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        .game img {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel-container">
+        <div class="carousel-track" id="track">
+            <div class="game"><img src="https://picsum.photos/200?random=1"></div>
+            <div class="game"><img src="https://picsum.photos/200?random=2"></div>
+            <div class="game"><img src="https://picsum.photos/200?random=3"></div>
+            <div class="game"><img src="https://picsum.photos/200?random=4"></div>
+            <div class="game"><img src="https://picsum.photos/200?random=5"></div>
+            <div class="game"><img src="https://picsum.photos/200?random=6"></div>
+            <div class="game"><img src="https://picsum.photos/200?random=7"></div>
+            <div class="game"><img src="https://picsum.photos/200?random=8"></div>
+        </div>
+        <div class="controls">
+            <button id="prev">‹</button>
+            <button id="next">›</button>
+        </div>
+    </div>
+
+    <script>
+        const track = document.getElementById('track');
+        const prev = document.getElementById('prev');
+        const next = document.getElementById('next');
+        const cards = document.querySelectorAll('.game');
+        const cardWidth = cards[0].offsetWidth;
+
+        let index = 0;
+
+        function moveNext() {
+            track.style.transition = "transform 0.5s ease";
+            track.style.transform = `translateX(-${cardWidth}px)`;
+
+            track.addEventListener('transitionend', () => {
+                track.appendChild(track.firstElementChild); // manda o primeiro pro final
+                track.style.transition = "none";
+                track.style.transform = "translateX(0)";
+            }, { once: true });
+        }
+
+        function movePrev() {
+            track.insertBefore(track.lastElementChild, track.firstElementChild); // joga último pra frente
+            track.style.transition = "none";
+            track.style.transform = `translateX(-${cardWidth}px)`;
+
+            requestAnimationFrame(() => {
+                track.style.transition = "transform 0.5s ease";
+                track.style.transform = "translateX(0)";
+            });
+        }
+
+        next.addEventListener('click', moveNext);
+        prev.addEventListener('click', movePrev);
+    </script>
+</body>
+
+</html>

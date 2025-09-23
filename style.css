@@ -772,7 +772,7 @@ footer p {
     }
 
     .jogoserio {
-        margin-top: -340px;
+        margin-top: -400px;
     }
 
     .containerfooter {
@@ -831,7 +831,7 @@ footer p {
     }
 
     footer {
-        translate: 0px -80px;
+        translate: 0px -40px;
     }
 }
 
@@ -878,7 +878,7 @@ footer p {
     }
 
     .jogoserio {
-        margin-top: -400px;
+        margin-top: -430px;
     }
 
     .containerfooter {
@@ -886,7 +886,8 @@ footer p {
     }
 
     footer {
-        translate: 0px -100px;
+        height: calc(100% - 480px);
+        translate: 0px -60px;
     }
 
     .foto1,

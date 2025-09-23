@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suporte - Projeto Lógica Legal</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="images/logologicalegal1.png">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Asimovian&family=Bungee&family=Gravitas+One&family=Lexend:wght@100..900&
+    family=Outfit:wght@100..900&family=Pixelify+Sans:wght@400..700&family=Roboto+Slab:wght@100..900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-blue: #0534f2;
+            --secondary-blue: #2b99ff;
+            --dark-bg: #0a0a1a;
+            --light-text: #ffffff;
+        }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: rgba(10, 10, 26, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 15px 50px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .titulo {
+            font-family: 'Pixelify Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--light-text);
+            margin: 0;
+            text-shadow: 0 0 10px var(--secondary-blue);
+        }
+
+        .items {
+            display: flex;
+            gap: 30px;
+        }
+
+        .items a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .items a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .items a:hover {
+            color: var(--secondary-blue);
+        }
+
+        .items a:hover::after {
+            width: 100%;
+        }
+
+        .quadrado {
+            position: fixed;
+            top: 120px;
+            left: 50px;
+            width: 100px;
+            height: 100px;
+            background-color: var(--primary-blue);
+            z-index: 900;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            box-shadow: 0 0 30px rgba(5, 52, 242, 0.5);
+        }
+
+        .quadrado.alt {
+            background-color: var(--secondary-blue);
+            transform: rotate(45deg) scale(1.1);
+            box-shadow: 0 0 40px rgba(43, 153, 255, 0.6);
+        }
+
+        .logo {
+            position: fixed;
+            top: 130px;
+            left: 60px;
+            width: 80px;
+            z-index: 950;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+            transition: all 0.5s ease;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 50px 50px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(43, 153, 255, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(5, 52, 242, 0.1) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-family: 'Pixelify Sans', sans-serif;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px var(--secondary-blue);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px var(--secondary-blue);
+            }
+            to {
+                text-shadow: 0 0 20px var(--primary-blue), 0 0 30px var(--secondary-blue);
+            }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .support-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 80px auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .support-card {
+            background: linear-gradient(145deg, rgba(10, 10, 26, 0.8), rgba(15, 15, 35, 0.8));
+            border: 1px solid rgba(43, 153, 255, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .support-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue), transparent);
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .support-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .support-card:hover::before {
+            opacity: 1;
+        }
+
+        .support-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-blue);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .support-card:hover i {
+            transform: scale(1.2);
+            color: var(--primary-blue);
+        }
+
+        .support-card h3 {
+            font-family: 'Pixelify Sans', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .support-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn-support {
+            background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-support::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .btn-support:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(5, 52, 242, 0.3);
+        }
+
+        .btn-support:hover::before {
+            left: 100%;
+        }
+
+        .faq-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .faq-section h2 {
+            font-family: 'Pixelify Sans', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            text-shadow: 0 0 10px var(--secondary-blue);
+        }
+
+        .accordion-item {
+            background: linear-gradient(145deg, rgba(10, 10, 26, 0.8), rgba(15, 15, 35, 0.8));
+            border: 1px solid rgba(43, 153, 255, 0.2);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .accordion-button {
+            background: transparent;
+            color: white;
+            font-weight: 600;
+            padding: 20px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: linear-gradient(45deg, rgba(5, 52, 242, 0.2), rgba(43, 153, 255, 0.2));
+            color: var(--secondary-blue);
+        }
+
+        .accordion-button::after {
+            content: '+';
+            font-size: 1.5rem;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-button:not(.collapsed)::after {
+            content: '-';
+            transform: translateY(-50%) rotate(0deg);
+            color: var(--secondary-blue);
+        }
+
+        .accordion-body {
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            border-top: 1px solid rgba(43, 153, 255, 0.2);
+        }
+
+        .contact-section {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 40px;
+            background: linear-gradient(145deg, rgba(10, 10, 26, 0.8), rgba(15, 15, 35, 0.8));
+            border: 1px solid rgba(43, 153, 255, 0.2);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-section h2 {
+            font-family: 'Pixelify Sans', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px var(--secondary-blue);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-control {
+            background: rgba(10, 10, 26, 0.6);
+            border: 1px solid rgba(43, 153, 255, 0.3);
+            border-radius: 8px;
+            color: white;
+            padding: 12px 15px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-blue);
+            box-shadow: 0 0 15px rgba(43, 153, 255, 0.3);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        footer {
+            background: linear-gradient(to top, rgba(10, 10, 26, 0.95), rgba(15, 15, 35, 0.95));
+            padding: 40px 0 20px;
+            margin-top: 100px;
+            border-top: 1px solid rgba(43, 153, 255, 0.2);
+        }
+
+        .containerfooter {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .containerfooter p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .redesfooter {
+            display: flex;
+            gap: 20px;
+        }
+
+        .redesfooter a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .redesfooter a:hover {
+            color: var(--secondary-blue);
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .items {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero {
+                padding: 150px 20px 50px;
+                text-align: center;
+            }
+            
+            .hero p {
+                margin: 0 auto 40px;
+            }
+            
+            .quadrado, .logo {
+                left: 20px;
+            }
+            
+            .containerfooter {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .items {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .support-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .quadrado, .logo {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <p class="titulo">LGL</p>
+        <div class="items">
+            <a href="home2.html" class="item1">Início</a>
+            <a href="#" class="item">Produtos</a>
+            <a href="#" class="item">Sobre</a>
+            <a href="#" class="item">Contato</a>
+            <a href="#" class="item">Blog</a>
+        </div>
+    </header>
+
+    <img src="images/logolgl3.png" alt="Logo" class="logo">
+    <div class="quadrado"></div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Central de Suporte</h1>
+            <p>Estamos aqui para ajudar você a resolver qualquer problema e tirar todas as suas dúvidas. Encontre respostas rápidas ou entre em contato conosco.</p>
+            <a href="#contact" class="btn-support">Fale Conosco</a>
+        </div>
+    </section>
+
+    <div class="support-options">
+        <div class="support-card">
+            <i class="fas fa-question-circle"></i>
+            <h3>FAQ</h3>
+            <p>Encontre respostas para as perguntas mais frequentes sobre nossos produtos e serviços.</p>
+            <a href="#faq" class="btn-support">Ver Perguntas</a>
+        </div>
+        
+        <div class="support-card">
+            <i class="fas fa-book"></i>
+            <h3>Documentação</h3>
+            <p>Acesse manuais, guias e tutoriais detalhados para aproveitar ao máximo nossos produtos.</p>
+            <a href="#" class="btn-support">Acessar Docs</a>
+        </div>
+        
+        <div class="support-card">
+            <i class="fas fa-comments"></i>
+            <h3>Chat ao Vivo</h3>
+            <p>Converse com nossos especialistas em tempo real para solucionar seus problemas rapidamente.</p>
+            <a href="#" class="btn-support">Iniciar Chat</a>
+        </div>
+        
+        <div class="support-card">
+            <i class="fas fa-ticket-alt"></i>
+            <h3>Abrir Ticket</h3>
+            <p>Envie uma solicitação de suporte detalhada e receba ajuda personalizada de nossa equipe.</p>
+            <a href="#contact" class="btn-support">Criar Ticket</a>
+        </div>
+    </div>
+
+    <section class="faq-section" id="faq">
+        <h2>Perguntas Frequentes</h2>
+        
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                    Como posso redefinir minha senha?
+                </button>
+                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Para redefinir sua senha, acesse a página de login e clique em "Esqueci minha senha". Você receberá um e-mail com instruções para criar uma nova senha segura.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                    Quais são os métodos de pagamento aceitos?
+                </button>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Aceitamos cartões de crédito (Visa, Mastercard, American Express), PayPal, PIX e transferência bancária. Todos os pagamentos são processados com segurança.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                    Como faço para atualizar meu plano?
+                </button>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Para atualizar seu plano, acesse sua conta, vá até a seção "Assinatura" e selecione o plano desejado. A alteração será efetivada imediatamente.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                    Vocês oferecem suporte personalizado?
+                </button>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Sim, oferecemos planos empresariais com suporte personalizado, incluindo treinamentos, configurações específicas e um gerente de conta dedicado.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                    Qual é o tempo de resposta para tickets de suporte?
+                </button>
+                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Nosso tempo médio de resposta é de 2 horas para usuários premium e 12 horas para usuários do plano básico. Emergências críticas são tratadas imediatamente.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <h2>Entre em Contato</h2>
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Seu e-mail" required>
+            </div>
+            <div class="form-group">
+                <select class="form-control" required>
+                    <option value="" disabled selected>Assunto</option>
+                    <option value="technical">Problema Técnico</option>
+                    <option value="billing">Dúvida sobre Cobrança</option>
+                    <option value="sales">Informações de Vendas</option>
+                    <option value="other">Outro</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" placeholder="Sua mensagem" required></textarea>
+            </div>
+            <button type="submit" class="btn-support">Enviar Mensagem</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="containerfooter">
+            <p><span>&copy;</span> 2025 Projeto Lógica Legal. Todos os direitos reservados.</p>
+            <div class="redesfooter">
+                <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook"></i></a>
+                <a href="https://wa.me/" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const header = document.querySelector('header');
+            const quadrado = document.querySelector('.quadrado');
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Hover effect for quadrado
+            if (quadrado) {
+                document.addEventListener('mousemove', function(e) {
+                    const x = e.clientX / window.innerWidth;
+                    const y = e.clientY / window.innerHeight;
+                    
+                    quadrado.style.transform = `translate(${x * 20 - 10}px, ${y * 20 - 10}px)`;
+                });
+            }
+            
+            // Animation for support cards on scroll
+            const supportCards = document.querySelectorAll('.support-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            supportCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+
+</html>

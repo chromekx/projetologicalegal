@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto Lógica Legal</title>
+  <link rel="stylesheet" href="jogosserios.css">
+  <link rel="icon" type="image/x-icon" href="images/logologicalegal1.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&family=Asimovian&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <p class="titulo">LGL</p>
+    <div class="items">
+      <a href="#" class="item1">Link 0</a>
+      <a href="#" class="item">Item 1</a>
+      <a href="#" class="item">Item 2</a>
+      <a href="#" class="item">Item 3</a>
+      <a href="#" class="item">Item 4</a>
+      <a href="#" class="item">Item 5</a>
+    </div>
+  </header>
+
+  <section class="container2">
+    <div class="linhajogo"></div>
+    <h1>Jogos Sérios</h1>
+  </section>
+
+  <div class="carousel-container">
+    <div class="carousel-track" id="track">
+      <div class="game"><img src="images/classicos/cubo/Captura.png" alt="Jogo 1"><div class="info">Jogo 1</div></div>
+      <div class="game"><img src="images/classicos/tetris/Captura.png" alt="Jogo 2"><div class="info">Jogo 2</div></div>
+      <div class="game"><img src="images/classicos/forca/Captura.png" alt="Jogo 3"><div class="info">Jogo 3</div></div>
+      <div class="game"><img src="images/classicos/xadrez/Captura.png" alt="Jogo 4"><div class="info">Jogo 4</div></div>
+      <div class="game"><img src="images/classicos/velha/Captura.png" alt="Jogo 5"><div class="info">Jogo 5</div></div>
+      <div class="game"><img src="images/teste.png" alt="Jogo 6"><div class="info">Jogo 6</div></div>
+      <div class="game"><img src="images/teste.png" alt="Jogo 7"><div class="info">Jogo 7</div></div>
+      <div class="game"><img src="images/teste.png" alt="Jogo 8"><div class="info">Jogo 8</div></div>
+    </div>
+
+    <div class="controls">
+      <button class="arrow left" id="prev">‹</button>
+      <button class="arrow right" id="next">›</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="containerfooter">
+      <p><span>&copy;</span> 2025 Projeto Lógica Legal. Todos os direitos reservados.</p>
+      <div class="redesfooter">
+        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://wa.me/" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const track = document.getElementById("track");
+    const prev = document.getElementById("prev");
+    const next = document.getElementById("next");
+    const games = document.querySelectorAll(".game");
+
+    let index = 0;
+
+    function getCardWidth() {
+      return games[0].getBoundingClientRect().width + 20; // largura + gap do CSS
+    }
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${index * getCardWidth()}px)`;
+    }
+
+    next.addEventListener("click", () => {
+      if (index < games.length - 4) { // 4 cards visíveis
+        index++;
+        updateCarousel();
+      }
+    });
+
+    prev.addEventListener("click", () => {
+      if (index > 0) {
+        index--;
+        updateCarousel();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      updateCarousel();
+    });
+  </script>
+</body>
+</html>
